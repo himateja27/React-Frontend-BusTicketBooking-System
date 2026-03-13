@@ -16,9 +16,9 @@ const Wrapper = ({ token, handleLogout, children, totalBookings }) => {
           </h1>
 
           <div className="flex items-center gap-4">
-            {token && (
+            {token ? (
               <>
-                {/* Total Bookings */}
+                {/* Total Bookings (only when logged in) */}
                 <span className="text-white font-medium">
                   Total Bookings: {totalBookings}
                 </span>
@@ -30,16 +30,15 @@ const Wrapper = ({ token, handleLogout, children, totalBookings }) => {
                 >
                   My Bookings
                 </Link>
-              </>
-            )}
 
-            {token ? (
-              <button
-                onClick={logout}
-                className="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-100 transition"
-              >
-                Logout
-              </button>
+                {/* Logout Button */}
+                <button
+                  onClick={logout}
+                  className="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-100 transition"
+                >
+                  Logout
+                </button>
+              </>
             ) : (
               <Link to="/login">
                 <button className="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-100 transition">
