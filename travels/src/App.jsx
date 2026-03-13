@@ -30,7 +30,7 @@ const App = () => {
   return (
     <Wrapper handleLogout={handleLogout} token={token}>
       <Routes>
-        <Route path="/" element={<BusList />} />
+        <Route path="/buses" element={<BusList />} />
         <Route path="/seats" element={<BusSeats />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />

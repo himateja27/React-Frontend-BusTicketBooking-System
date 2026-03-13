@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [form, setForm] = useState({
@@ -8,6 +9,7 @@ const RegisterForm = () => {
     password: "",
   });
   const [message, setMessage] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -18,6 +20,7 @@ const RegisterForm = () => {
     try {
       await axios.post("http://localhost:8000/api/register/", form);
       setMessage("Registration successful!");
+      setRedirect(true);
     } catch (error) {
       setMessage(
         "Registration failed!" +
@@ -25,6 +28,10 @@ const RegisterForm = () => {
       );
     }
   };
+
+  if (redirect) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-500 to-teal-600">
